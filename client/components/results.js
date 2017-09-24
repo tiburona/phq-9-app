@@ -22,6 +22,7 @@ const levels = {
     to confirm your diagnosis and make a treatment plan.'
 }
 
+//given a score on the PHQ, return the level of severity
 export const getLevel = (num) => {
   if (num > 19) return 'severe'
   if (num > 14) return 'moderateSevere'
@@ -34,6 +35,7 @@ export const Results = ({ score, history, user }) => {
 
   var results
 
+  // if the user has not yet taken the PHQ display a link to the test
   if (!score && score !== 0) {
     results =
       <div>
@@ -43,11 +45,15 @@ export const Results = ({ score, history, user }) => {
         </div>
       </div>
   } else {
+    // if the user has taken it display results
+
+    // the message they get depends on whether the user is logged in
     var historyMessage = user.id ?
       <div>
         <h4>If you'd like to see your full history, go to your home page.</h4>
         {navButton('/', 'Home', history, [40, 0, 0, 0])}
       </div> :
+    // or not
       <div>
         <h4>Log in or sign up to track your history.</h4>
         {navButton('/login', 'Login', history, [40, 20, 20, 0])}
