@@ -1,0 +1,36 @@
+
+.center {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+
+.center-text {
+  text-align: center;
+  }
+
+.borderless {
+  border: none
+  }
+
+.table-striped > tbody > tr:nth-child(2n+1) {
+  background-color: #d0dce5;
+ }
+
+.navbar-brand:link {
+  text-decoration: none;
+}
+
+.navbar-brand:visited {
+  text-decoration: none;
+}
+
+.navbar-brand:hover {
+  text-decoration: underline;
+}
+
+.navbar-brand:active {
+  text-decoration: underline;
+}
