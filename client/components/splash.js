@@ -22,7 +22,7 @@ export const Splash = ({history}) => {
         <br />
         <br />
         Remember that online questionnaires are not a substitute for
-      the diagnosis of a mental health professional.
+      diagnosis by a mental health professional.
       </h4>
       </div>
       <div className='center'>
