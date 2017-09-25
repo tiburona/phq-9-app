@@ -9,11 +9,12 @@ const ADD_PHQ = 'ADD_PHQ'
 const SCORE_PHQ = 'SCORE_PHQ'
 const UPDATE_USER = 'UPDATE_USER'
 const GET_PHQS = 'GET_PHQ'
+const CLEAR_PHQ = 'CLEAR_PHQ'
 
 /**
  * INITIAL STATE
  */
-const defaultPhq = {data: {}, history: []}
+const defaultPhq = {data: {}, history: [], userId:[]}
 
 /**
  * ACTION CREATORS
@@ -22,6 +23,8 @@ const addPhq = phq => ({type: ADD_PHQ, phq})
 export const scorePhq = score => ({type: SCORE_PHQ, score})
 const updateUser = user => ({type: UPDATE_USER, user})
 const receivePhqs = phqs => ({type: GET_PHQS, phqs})
+export const clearPhq = () => 
+  ({type: CLEAR_PHQ, history:[], data:{}, userId: [], score: undefined})
 
 /**
  * ASYNC ACTION CREATORS
@@ -64,6 +67,13 @@ export default function (state = defaultPhq, action) {
       return newState
     case UPDATE_USER:
       newState.userId = action.user
+      return newState
+    case CLEAR_PHQ:
+      newState.history = action.history
+      newState.data = action.data
+      newState.userId = action.userId
+      newState.score = action.score
+      return newState
     default:
       return state
   }

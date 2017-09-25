@@ -1,6 +1,6 @@
 import axios from 'axios'
 import history from '../history'
-import {putPhq} from '.'
+import {putPhq, clearPhq, removeSession, getSession} from '.'
 
 /**
  * ACTION TYPES
@@ -29,6 +29,9 @@ export const me = () =>
         dispatch(getUser(res.data || defaultUser)))
       .catch(err => console.log(err))
 
+// On login the user must be put on state, and any PHQ's
+// in the database matching the session must be updated
+// with the user id.
 export const auth = (email, password, method, session) => 
   dispatch => 
     axios.post(`/auth/${method}`, {email, password})
@@ -40,12 +43,21 @@ export const auth = (email, password, method, session) =>
       .catch(error =>
         dispatch(getUser({error})))
 
+// On logout, user and phq must be cleared off state,
+// The session must be forcefully destroyed and removed
+// from state, and then the new session must be fetched. 
 export const logout = () =>
   dispatch =>
     axios.post('/auth/logout')
       .then(res => {
+        axios.get('/user')
         dispatch(removeUser())
+        dispatch(clearPhq())
+        dispatch(removeSession())
         history.push('/login')
+      })
+      .then(()=>{
+        dispatch(getSession())
       })
       .catch(err => console.log(err))
 
