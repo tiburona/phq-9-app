@@ -38,8 +38,8 @@ export const auth = (email, password, method, session) =>
       .then(res => {
         dispatch(getUser(res.data))
         dispatch(putPhq(res.data.id, session))
-        history.push('/')
       })
+      .then(()=> history.push('/'))
       .catch(error =>
         dispatch(getUser({error})))
 

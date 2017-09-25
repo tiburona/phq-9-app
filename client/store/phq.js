@@ -8,7 +8,7 @@ import store from '.'
 const ADD_PHQ = 'ADD_PHQ'
 const SCORE_PHQ = 'SCORE_PHQ'
 const UPDATE_USER = 'UPDATE_USER'
-const GET_PHQS = 'GET_PHQ'
+const GET_PHQS = 'GET_PHQS'
 const CLEAR_PHQ = 'CLEAR_PHQ'
 
 /**

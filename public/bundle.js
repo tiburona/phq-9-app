@@ -20611,7 +20611,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var ADD_PHQ = 'ADD_PHQ';
 var SCORE_PHQ = 'SCORE_PHQ';
 var UPDATE_USER = 'UPDATE_USER';
-var GET_PHQS = 'GET_PHQ';
+var GET_PHQS = 'GET_PHQS';
 var CLEAR_PHQ = 'CLEAR_PHQ';
 
 /**
@@ -20843,7 +20843,8 @@ var auth = exports.auth = function auth(email, password, method, session) {
     return _axios2.default.post('/auth/' + method, { email: email, password: password }).then(function (res) {
       dispatch(getUser(res.data));
       dispatch((0, _.putPhq)(res.data.id, session));
-      _history2.default.push('/');
+    }).then(function () {
+      return _history2.default.push('/');
     }).catch(function (error) {
       return dispatch(getUser({ error: error }));
     });
