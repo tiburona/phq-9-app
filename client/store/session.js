@@ -16,24 +16,25 @@ const initSession = {}
 /**
  * ACTION CREATORS
  */
-const receiveSession = session => ({type: GET_SESSION, session})
-const clearSession = () => ({type: CLEAR_SESSION, session: ''})
+const receiveSession = session => ({ type: GET_SESSION, session })
+const clearSession = () => ({ type: CLEAR_SESSION, session: '' })
 
 /**
  * ASYNC ACTION CREATORS
  */
 export const getSession = (session) =>
-  dispatch => 
+  dispatch =>
     axios.get('/api/session')
-      .then(res => 
+      .then(res =>
         dispatch(receiveSession(res.data.session)))
       .catch(err => console.log(err))
 
-export const removeSession = () => 
+export const removeSession = () =>
   dispatch => {
     return axios.get('/api/session/end')
       .then(res => {
-        dispatch(clearSession())})
+        dispatch(clearSession())
+      })
       .catch(err => console.log(err))
   }
 /**

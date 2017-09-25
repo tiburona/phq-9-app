@@ -1,17 +1,17 @@
-import React, {Component} from 'react'
-import {buttonStyle} from './constants'
+import React, { Component } from 'react'
+import { buttonStyle } from './constants'
 
 /**
  * COMPONENT
  */
 
 export const Phq = (
-  {hilitRows, checkRowStyle, handleSubmit,makeRow, makeButtons}) => {
+  { hilitRows, checkRowStyle, handleSubmit, makeRow, makeButtons }) => {
   return (
     <div className='container'>
       <div className='container-fluid'>
         <form onSubmit={handleSubmit}>
-          <div className='row' style={{marginTop: 30, marginBottom: 30}}>
+          <div className='row' style={{ marginTop: 30, marginBottom: 30 }}>
             <div className='col center-text'>
               <h5>Over the last 2 weeks, how often have you been bothered
                             by any of the following problems?
@@ -38,7 +38,7 @@ export const Phq = (
             </div>
           </div>
           <div className='row'>
-            <div className='col' style={{textAlign:'center', marginBottom: 100}}>
+            <div className='col' style={{ textAlign: 'center', marginBottom: 100 }}>
               <button
                 type='submit'
                 className='btn'

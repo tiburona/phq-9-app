@@ -1,10 +1,10 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import _ from 'lodash'
-import {postPhq, scorePhq} from '../store'
-import {Phq} from '.'
-import {UnfinishedModal} from '.'
-import {lightColor, medColor, darkColor} from './constants'
+import { postPhq, scorePhq } from '../store'
+import { Phq } from '.'
+import { UnfinishedModal } from '.'
+import { lightColor, medColor, darkColor } from './constants'
 
 
 /**
@@ -32,7 +32,7 @@ class PhqContainer extends Component {
   handleChange(question, event) {
     var newPhq = this.state.phq
     newPhq[question] = event.target.value
-    this.setState({phq: newPhq})
+    this.setState({ phq: newPhq })
   }
 
   // on submit, first prevent default and execute
@@ -116,7 +116,7 @@ class PhqContainer extends Component {
   makeButtons = (labels, style, i) => {
     var question = 'q' + (i + 1).toString()
     return (
-      <div style={{paddingRight: 15, margin: 0}}>
+      <div style={{ paddingRight: 15, margin: 0 }}>
         {labels.map((label, j) => this.makeButton(question, label, style, j))}
       </div>
     )
@@ -130,7 +130,7 @@ class PhqContainer extends Component {
           <input
             type="radio"
             value={j}
-            onChange={(event) => {this.handleChange(question, event)}}
+            onChange={(event) => { this.handleChange(question, event) }}
             checked={this.state.phq[question] && parseInt(this.state.phq[question]) == j} />
           <label>{label}</label>
         </div>

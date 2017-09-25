@@ -1,16 +1,16 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
-import {fetchPhqs} from '../store'
-import {getLevel} from './results'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { fetchPhqs } from '../store'
+import { getLevel } from './results'
 
 /**
  * COMPONENT
  */
 
-export const Past = ({pastScores}) => {
+export const Past = ({ pastScores }) => {
 
   return (
-    <div className='container' style={{margin: 40}}>
+    <div className='container' style={{ margin: 40 }}>
       <div className='container-fluid'>
         <div className='row'>
           <div className='col center-text'>
@@ -21,21 +21,21 @@ export const Past = ({pastScores}) => {
         </div>
         <table
           className='table table-striped'
-          style={{marginTop: 40}} >
+          style={{ marginTop: 40 }} >
           <tbody>
             <tr>
-              <th><td style={{border: 0}}>Date</td></th>
-              <th><td style={{border: 0}}>Score</td></th>
-              <th><td style={{border: 0}}>Severity</td></th>
+              <th><td style={{ border: 0 }}>Date</td></th>
+              <th><td style={{ border: 0 }}>Score</td></th>
+              <th><td style={{ border: 0 }}>Severity</td></th>
             </tr>
             {pastScores && pastScores.map((phq, i) => {
               var level = getLevel(phq.score)
-              if (level==='moderateSevere') level = 'moderate-severe'
+              if (level === 'moderateSevere') level = 'moderate-severe'
               return (
                 <tr key={i}>
-                <td style={{paddingLeft:24}}>{phq.date}</td>
-                <td style={{paddingLeft:24}}>{phq.score}</td>
-                <td style={{paddingLeft:24}}>{level}</td>
+                  <td style={{ paddingLeft: 24 }}>{phq.date}</td>
+                  <td style={{ paddingLeft: 24 }}>{phq.score}</td>
+                  <td style={{ paddingLeft: 24 }}>{level}</td>
                 </tr>
               )
             })}
@@ -78,7 +78,7 @@ class PastScoresContainer extends Component {
   render() {
     const scores =
       this.sort(this.props.pastScores)
-        .map(phq => ({date: this.parseDate(phq.createdAt), score: phq.score}))
+        .map(phq => ({ date: this.parseDate(phq.createdAt), score: phq.score }))
     return (
       <Past pastScores={scores} />
     )

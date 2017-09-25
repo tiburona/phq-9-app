@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Modal from 'react-modal'
-import {buttonStyle} from './constants'
+import { buttonStyle } from './constants'
 
 /**
  * COMPONENT
  */
 
-export const UnfinishedModal = ({show, toggleModal}) => {
+export const UnfinishedModal = ({ show, toggleModal }) => {
   return (
     <Modal
       isOpen={show}
@@ -15,13 +15,13 @@ export const UnfinishedModal = ({show, toggleModal}) => {
       contentLabel="Unfinished Modal"
     >
       <div style={modalStyles.container}>
-        <div style={{padding: 10}}>Remember to answer every question.</div>
-        <div style={{padding: 10, textAlign: 'center'}}>
+        <div style={{ padding: 10 }}>Remember to answer every question.</div>
+        <div style={{ padding: 10, textAlign: 'center' }}>
           <button
             onClick={toggleModal}
             className='btn'
             style={buttonStyle}>
-              Go Back
+            Go Back
             </button>
         </div>
       </div>

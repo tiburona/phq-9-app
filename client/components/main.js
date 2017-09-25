@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {connect} from 'react-redux'
-import {withRouter, Link} from 'react-router-dom'
-import {logout} from '../store'
-import {medColor} from './constants'
+import { connect } from 'react-redux'
+import { withRouter, Link } from 'react-router-dom'
+import { logout } from '../store'
+import { medColor } from './constants'
 
 /**
  * COMPONENT
@@ -11,26 +11,26 @@ import {medColor} from './constants'
  *  else common to the entire app. 
  */
 const Main = (props) => {
-  const {children, handleClick, isLoggedIn} = props
+  const { children, handleClick, isLoggedIn } = props
 
   return (
     <div>
-      <nav className='navbar navbar-toggleable-md navbar-light bg-faded' 
-      style={{backgroundColor: medColor}}>
+      <nav className='navbar navbar-toggleable-md navbar-light bg-faded'
+        style={{ backgroundColor: medColor }}>
         {
           isLoggedIn
             ? <div>
               {/* The navbar will show these links after you log in */}
-              <Link to='/' className="navbar-brand" style={{ margin: 15}} >Home</Link>
-              <Link to='/phq' style={{margin: 15}}>Take the PHQ-9</Link>
+              <Link to='/' className="navbar-brand" style={{ margin: 15 }} >Home</Link>
+              <Link to='/phq' style={{ margin: 15 }}>Take the PHQ-9</Link>
               <a href='#' onClick={handleClick}>Logout</a>
             </div>
-            : <div >
+            : <div>
               {/* The navbar will show these links before you log in */}
-              <Link to='/' className="navbar-brand" style={{margin: 10}} >Home</Link>
-              <Link to='/phq' style={{margin: 15}}>Take the PHQ-9</Link>
-              <Link to='/login' style={{margin: 15}}>Login</Link>
-              <Link to='/signup' style={{margin: 15}}>Sign Up</Link>
+              <Link to='/' className="navbar-brand" style={{ margin: 10 }} >Home</Link>
+              <Link to='/phq' style={{ margin: 15 }}>Take the PHQ-9</Link>
+              <Link to='/login' style={{ margin: 15 }}>Login</Link>
+              <Link to='/signup' style={{ margin: 15 }}>Sign Up</Link>
             </div>
         }
       </nav>
@@ -50,7 +50,7 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    handleClick () {
+    handleClick() {
       dispatch(logout())
     },
     getSession() {

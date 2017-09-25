@@ -20665,7 +20665,7 @@ var postPhq = exports.postPhq = function postPhq(phq) {
 var putPhq = exports.putPhq = function putPhq(userId, session) {
   return function (dispatch) {
     return _axios2.default.put('/api/phqs/' + session, { userId: userId }).then(function (res) {
-      return dispatch(updateUser(res.data));
+      return dispatch(updateUser(res.data[1].id));
     }).catch(function (err) {
       return console.log(err);
     });
@@ -20841,10 +20841,9 @@ var me = exports.me = function me() {
 var auth = exports.auth = function auth(email, password, method, session) {
   return function (dispatch) {
     return _axios2.default.post('/auth/' + method, { email: email, password: password }).then(function (res) {
-      dispatch(getUser(res.data));
-      dispatch((0, _.putPhq)(res.data.id, session));
-    }).then(function () {
-      return _history2.default.push('/');
+      Promise.all([dispatch(getUser(res.data)), dispatch((0, _.putPhq)(res.data.id, session))]).then(function () {
+        return _history2.default.push('/');
+      });
     }).catch(function (error) {
       return dispatch(getUser({ error: error }));
     });

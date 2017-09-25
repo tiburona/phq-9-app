@@ -1,18 +1,18 @@
 import React from 'react'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import {auth, putPhq} from '../store'
-import {buttonStyle} from './constants'
+import { auth, putPhq } from '../store'
+import { buttonStyle } from './constants'
 
 /**
  * COMPONENT
  */
 const AuthForm = (props) => {
-  const {name, displayName, handleSubmit, error, session} = props
+  const { name, displayName, handleSubmit, error, session } = props
 
   return (
-    <div className='container' style={{marginTop: 40}}>
-      <form onSubmit={(evt)=>{handleSubmit(evt, session)}} name={name} className={'form-group'}>
+    <div className='container' style={{ marginTop: 40 }}>
+      <form onSubmit={(evt) => { handleSubmit(evt, session) }} name={name} className={'form-group'}>
         <div>
           <label htmlFor='email'><small>Email</small></label>
           <input className='form-control' name='email' type='text' />
@@ -53,7 +53,7 @@ const mapSignup = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    handleSubmit (evt, session) {
+    handleSubmit(evt, session) {
       evt.preventDefault()
       const formName = evt.target.name
       const email = evt.target.email.value

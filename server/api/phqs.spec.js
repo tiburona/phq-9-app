@@ -1,6 +1,6 @@
 /* global describe beforeEach it */
 
-const {expect} = require('chai')
+const { expect } = require('chai')
 const request = require('supertest')
 const authRequest = require('superagent')
 const db = require('../db')
@@ -13,9 +13,11 @@ describe('Phq routes', () => {
   })
 
   var session = 'aaa123'
-  var phq = {q1: 0, q2: 1, q3: 3, q4: 3, q5: 1,
-    q6: 2, q7: 3, q8: 0, q9: 2, q10: 3, session: session}
-  var user = {userId: 1}
+  var phq = {
+    q1: 0, q2: 1, q3: 3, q4: 3, q5: 1,
+    q6: 2, q7: 3, q8: 0, q9: 2, q10: 3, session: session
+  }
+  var user = { userId: 1 }
 
   describe('/api/phqs/', () => {
 
@@ -42,6 +44,6 @@ describe('Phq routes', () => {
           expect(res.body[1][0].userId).to.be.equal(1)
         })
     })
-    
-  }) 
+
+  })
 }) 

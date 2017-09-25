@@ -18,7 +18,6 @@ router.get('/:user', (req, res, next) => {
   }
 })
 
-
 router.post('/', (req, res, next) => {
   Phq.create(req.body)
     .then(phq => res.status(201).json(phq))
@@ -32,9 +31,11 @@ router.put('/:session', (req, res, next) =>
       where: {
         session: req.params.session
       },
-      returning: true
+      returning: true,
+      plain: true
     })
-    .then((phq) => res.status(201).json(phq))
+    .then((phq) => {
+      res.status(201).json(phq)})
     .catch(next)
 )
 

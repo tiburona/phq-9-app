@@ -1,5 +1,5 @@
 import React from 'react'
-import {buttonStyle} from './constants'
+import { buttonStyle } from './constants'
 
 export const makeNavButton = (path, text, history, margins) => {
   var style = Object.assign({}, buttonStyle)
@@ -9,7 +9,7 @@ export const makeNavButton = (path, text, history, margins) => {
   style.marginBottom = margins[3]
   return (
     <button
-      className='btn' style={style} onClick={()=>{history.push(path)}}>
+      className='btn' style={style} onClick={() => { history.push(path) }}>
       {text}
     </button>
   )

@@ -2,10 +2,10 @@
 
 import 'jsdom-global/register'
 
-import {expect} from 'chai'
+import { expect } from 'chai'
 import React from 'react'
-import {shallow, mount} from 'enzyme'
-import {UnfinishedModal} from '.' 
+import { shallow, mount } from 'enzyme'
+import { UnfinishedModal } from '.'
 
 describe('UnfinishedModal', () => {
   let unfinishedModal

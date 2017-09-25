@@ -1,26 +1,26 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
-import {Router} from 'react-router'
-import {Route, Switch} from 'react-router-dom'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { Router } from 'react-router'
+import { Route, Switch } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import history from './history'
 import {
-  Main, Login, Signup, Splash, 
+  Main, Login, Signup, Splash,
   Phq, PhqContainer, Results, Past
 } from './components'
-import {me, getSession, fetchPhqs} from './store'
+import { me, getSession, fetchPhqs } from './store'
 
 /**
  * COMPONENT
  */
 class Routes extends Component {
-  componentWillMount () {
+  componentWillMount() {
     this.props.loadInitialData()
     this.props.getSession()
   }
 
-  render () {
-    const {isLoggedIn, getSession} = this.props
+  render() {
+    const { isLoggedIn, getSession } = this.props
 
     // The root path directs to user history or the splash
     // page depending on whether the user is logged in.
@@ -57,7 +57,7 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    loadInitialData () {
+    loadInitialData() {
       dispatch(me())
     },
     getSession() {

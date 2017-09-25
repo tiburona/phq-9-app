@@ -1,8 +1,8 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
-import {buttonStyle} from './constants'
-import {navButton} from '.'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
+import { buttonStyle } from './constants'
+import { navButton } from '.'
 
 /**
  * COMPONENT
@@ -40,7 +40,7 @@ export const Results = ({ score, history, user }) => {
     results =
       <div>
         <h4>You have to take the PHQ-9 before you can see your results.</h4>
-        <div className='container center' style={{padding: 40}}>
+        <div className='container center' style={{ padding: 40 }}>
           {navButton('/phq', 'Take the PHQ-9', history, [0, 0, 0, 0])}
         </div>
       </div>
@@ -53,7 +53,7 @@ export const Results = ({ score, history, user }) => {
         <h4>If you'd like to see your full history, go to your home page.</h4>
         {navButton('/', 'Home', history, [40, 0, 0, 0])}
       </div> :
-    // or not
+      // or not
       <div>
         <h4>Log in or sign up to track your history.</h4>
         {navButton('/login', 'Login', history, [40, 20, 20, 0])}
@@ -61,7 +61,7 @@ export const Results = ({ score, history, user }) => {
       </div>
     results =
       <div className='container'>
-        <h4 style={{marginBottom: 30}}>{`Your score on the PHQ-9 was ${score}.  ${levels[getLevel(parseInt(score))]}`}</h4>
+        <h4 style={{ marginBottom: 30 }}>{`Your score on the PHQ-9 was ${score}.  ${levels[getLevel(parseInt(score))]}`}</h4>
         {historyMessage}
       </div>
   }

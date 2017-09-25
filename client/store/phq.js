@@ -14,43 +14,43 @@ const CLEAR_PHQ = 'CLEAR_PHQ'
 /**
  * INITIAL STATE
  */
-const defaultPhq = {data: {}, history: [], userId:[]}
+const defaultPhq = { data: {}, history: [], userId: [] }
 
 /**
  * ACTION CREATORS
  */
-const addPhq = phq => ({type: ADD_PHQ, phq})
-export const scorePhq = score => ({type: SCORE_PHQ, score})
-const updateUser = user => ({type: UPDATE_USER, user})
-const receivePhqs = phqs => ({type: GET_PHQS, phqs})
-export const clearPhq = () => 
-  ({type: CLEAR_PHQ, history:[], data:{}, userId: [], score: undefined})
+const addPhq = phq => ({ type: ADD_PHQ, phq })
+export const scorePhq = score => ({ type: SCORE_PHQ, score })
+const updateUser = user => ({ type: UPDATE_USER, user })
+const receivePhqs = phqs => ({ type: GET_PHQS, phqs })
+export const clearPhq = () =>
+  ({ type: CLEAR_PHQ, history: [], data: {}, userId: [], score: undefined })
 
 /**
  * ASYNC ACTION CREATORS
  */
 
-export const fetchPhqs = (userId) => 
-dispatch => 
-  axios.get(`/api/phqs/${userId}`)
-    .then(res => 
-      dispatch(receivePhqs(res.data)))
-    .catch(err => console.log(err))
+export const fetchPhqs = (userId) =>
+  dispatch =>
+    axios.get(`/api/phqs/${userId}`)
+      .then(res =>
+        dispatch(receivePhqs(res.data)))
+      .catch(err => console.log(err))
 
 export const postPhq = (phq) =>
-  dispatch => 
+  dispatch =>
     axios.post('/api/phqs', phq)
-      .then(res => 
+      .then(res =>
         dispatch(addPhq(res.data)))
       .catch(err => console.log(err))
 
-export const putPhq = (userId, session) => 
-  dispatch => 
-    axios.put(`/api/phqs/${session}`, {userId})
-      .then(res => 
-        dispatch(updateUser(res.data)))
+export const putPhq = (userId, session) =>
+  dispatch =>
+    axios.put(`/api/phqs/${session}`, { userId })
+      .then(res =>
+        dispatch(updateUser(res.data[1].id)))
       .catch(err => console.log(err))
-  
+
 /**
  * REDUCER
  */
